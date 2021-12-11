@@ -31,7 +31,8 @@ func (r *lost) List(ctx context.Context, opts schema.LostListRequest) ([]*schema
 
 	if len(opts.Keyword) > 0 {
 		queryWord := "%" + opts.Keyword + "%"
-		tx = tx.Where("(nickname like ?) OR (missed_address like ?)",
+		tx = tx.Where("(nickname like ?) OR (missed_address like ?) OR (missed_address like ?)",
+			queryWord,
 			queryWord,
 			queryWord,
 		)
